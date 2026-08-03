@@ -109,9 +109,9 @@ a:hover { color: var(--muted); }
 }
 .paper .coauthors { color: var(--muted); font-style: italic; margin: 0 0 0.7rem; font-size: 0.98rem; }
 .paper .abstract  { color: var(--ink); font-size: 0.98rem; margin: 0 0 0.55rem; }
-.paper .links     { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.02em; }
-.paper .links a   { color: var(--muted); text-decoration: none; margin-right: 1.2rem; }
-.paper .links a:hover { color: var(--ink); }
+.paper .links     { font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.02em; }
+.paper .links a   { color: #1a3a6b; font-weight: 600; text-decoration: none; margin-right: 1.2rem; }
+.paper .links a:hover { color: #0f2547; text-decoration: underline; text-underline-offset: 2px; }
 
 .footer-nav {
   margin-top: 4rem;
