@@ -1,6 +1,5 @@
 /* Stefan Dietrich — personal site
-   Monochrome, minimal, with a faint patent-drawing motif.
-   Two families: serif for text, sans for utility labels. */
+   Monochrome, minimal. Two families: serif for text, sans for utility labels. */
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500&display=swap');
 
@@ -9,7 +8,7 @@
   --muted: #6a6a6a;
   --faint: #9a9a9a;
   --rule:  #e2e2e2;
-  --bg:    #efefec;   /* soft gray desk around the white sheet */
+  --bg:    #ffffff;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --measure: 39rem;
@@ -21,12 +20,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background-color: var(--bg);
-  /* faint drafting grid, like section paper on a drawing board */
-  background-image:
-    linear-gradient(to right, rgba(90,120,160,0.14) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(90,120,160,0.14) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--serif);
   font-size: 18px;
@@ -34,37 +28,12 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  position: relative;
-  min-height: 100vh;
 }
-
-/* ---- event-study ornament, top right ---- */
-body::before {
-  content: "";
-  position: fixed;
-  top: 40px;
-  right: -150px;
-  width: 620px;
-  height: 480px;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.08;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 340' fill='none' stroke='%23415a78'><line x1='60' y1='36' x2='60' y2='284' stroke-width='1.4'/><line x1='60' y1='284' x2='416' y2='284' stroke-width='1.4'/><line x1='54' y1='96' x2='60' y2='96' stroke-width='1'/><line x1='54' y1='143' x2='60' y2='143' stroke-width='1'/><line x1='54' y1='190' x2='60' y2='190' stroke-width='1'/><line x1='54' y1='237' x2='60' y2='237' stroke-width='1'/><line x1='60' y1='190' x2='416' y2='190' stroke-dasharray='3 6' stroke-width='0.9'/><line x1='229' y1='44' x2='229' y2='284' stroke-dasharray='5 5' stroke-width='0.9'/><g stroke-width='1.2'><line x1='94' y1='176' x2='94' y2='204'/><line x1='89' y1='176' x2='99' y2='176'/><line x1='89' y1='204' x2='99' y2='204'/><line x1='128' y1='180' x2='128' y2='206'/><line x1='123' y1='180' x2='133' y2='180'/><line x1='123' y1='206' x2='133' y2='206'/><line x1='162' y1='174' x2='162' y2='200'/><line x1='157' y1='174' x2='167' y2='174'/><line x1='157' y1='200' x2='167' y2='200'/><line x1='196' y1='178' x2='196' y2='203'/><line x1='191' y1='178' x2='201' y2='178'/><line x1='191' y1='203' x2='201' y2='203'/><line x1='262' y1='138' x2='262' y2='168'/><line x1='257' y1='138' x2='267' y2='138'/><line x1='257' y1='168' x2='267' y2='168'/><line x1='296' y1='122' x2='296' y2='154'/><line x1='291' y1='122' x2='301' y2='122'/><line x1='291' y1='154' x2='301' y2='154'/><line x1='330' y1='112' x2='330' y2='146'/><line x1='325' y1='112' x2='335' y2='112'/><line x1='325' y1='146' x2='335' y2='146'/><line x1='364' y1='104' x2='364' y2='140'/><line x1='359' y1='104' x2='369' y2='104'/><line x1='359' y1='140' x2='369' y2='140'/><line x1='398' y1='100' x2='398' y2='138'/><line x1='393' y1='100' x2='403' y2='100'/><line x1='393' y1='138' x2='403' y2='138'/></g><g fill='%23415a78' stroke='none'><circle cx='94' cy='190' r='4'/><circle cx='128' cy='193' r='4'/><circle cx='162' cy='187' r='4'/><circle cx='196' cy='190.5' r='4'/><circle cx='262' cy='153' r='4'/><circle cx='296' cy='138' r='4'/><circle cx='330' cy='129' r='4'/><circle cx='364' cy='122' r='4'/><circle cx='398' cy='119' r='4'/></g></svg>");
-}
-
 
 .wrap {
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 3.4rem 2.2rem 5rem;
-  position: relative;
-  z-index: 1;
-  background: #ffffff;                 /* solid sheet: no grid behind text */
-  border-left: 1px solid var(--rule);  /* page edges, like a sheet on the board */
-  border-right: 1px solid var(--rule);
-  min-height: 100vh;
+  padding: 3.4rem 1.6rem 5rem;
 }
 
 /* ---- top navigation ---- */
@@ -90,18 +59,6 @@ h1 {
   letter-spacing: -0.01em;
   margin: 0 0 0.55rem;
 }
-
-/* small drafting flourish under the name */
-h1::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 7px;
-  margin-top: 0.75rem;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 7'><line x1='0' y1='3.5' x2='26' y2='3.5' stroke='%23141414' stroke-width='1'/><rect x='29' y='0.5' width='6' height='6' fill='none' stroke='%23141414' stroke-width='1' transform='rotate(45 32 3.5)'/><line x1='38' y1='3.5' x2='64' y2='3.5' stroke='%23141414' stroke-width='1'/></svg>");
-}
-
 .subtitle {
   font-family: var(--sans);
   font-size: 0.82rem;
@@ -111,7 +68,7 @@ h1::after {
   margin: 0 0 2.4rem;
 }
 
-/* ---- headshot: mounted like a plate in a technical volume ---- */
+/* ---- headshot ---- */
 .headshot {
   width: 132px;
   height: 165px;
@@ -119,10 +76,6 @@ h1::after {
   filter: grayscale(100%);
   float: right;
   margin: 0.5rem 0 1.1rem 1.9rem;
-  border: 1px solid var(--ink);
-  outline: 1px solid var(--rule);
-  outline-offset: 5px;
-  background: #fff;
 }
 
 /* ---- body text ---- */
@@ -173,21 +126,10 @@ a:hover { color: var(--muted); }
   h1 { font-size: 2rem; }
   .headshot { width: 108px; height: 135px; margin-left: 1.1rem; }
   nav { gap: 1.3rem; }
-  body::before {
-    width: 400px; height: 310px;
-    top: 30px; right: -140px;
-    opacity: 0.055;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
-}
-
-/* keep print clean */
-@media print {
-  body { background: #fff; }
-  body::before { display: none; }
 }
 
 a:focus-visible, nav a:focus-visible {
