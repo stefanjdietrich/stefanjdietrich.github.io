@@ -157,10 +157,11 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  top: 90px;
-  right: 40px;
-  width: 250px;
-  height: 640px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(50% - 19.5rem - 2.5rem - 240px);
+  width: 240px;
+  height: min(620px, 78vh);
   pointer-events: none;
   z-index: 0;
   opacity: 0.75;
@@ -170,7 +171,7 @@ body::after {
 }
 
 /* hide the figures when the viewport is too narrow for them to sit clear of the text */
-@media (max-width: 68rem) {
+@media (max-width: 76rem) {
   body::before, body::after { display: none; }
 }
 
