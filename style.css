@@ -1,17 +1,18 @@
 /* Stefan Dietrich — personal site
-   Monochrome, minimal. Two families: serif for text, sans for utility labels. */
+   Monochrome, minimal, with a faint patent-drawing motif.
+   Two families: serif for text, sans for utility labels. */
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500&display=swap');
 
 :root {
-  --ink:   #141414;   /* primary text            */
-  --muted: #6a6a6a;   /* secondary text / labels */
-  --faint: #9a9a9a;   /* captions                */
-  --rule:  #e2e2e2;   /* hairline dividers       */
-  --bg:    #ffffff;
+  --ink:   #141414;
+  --muted: #6a6a6a;
+  --faint: #9a9a9a;
+  --rule:  #e2e2e2;
+  --bg:    #fbfbfa;   /* a breath warmer than pure white */
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --measure: 39rem;   /* comfortable reading width */
+  --measure: 39rem;
 }
 
 * { box-sizing: border-box; }
@@ -20,7 +21,12 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  /* faint drafting grid, like section paper on a drawing board */
+  background-image:
+    linear-gradient(to right, rgba(20,20,20,0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20,20,20,0.028) 1px, transparent 1px);
+  background-size: 32px 32px;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 18px;
@@ -28,12 +34,32 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ---- patent-drawing ornament: gear + section lines, top right ---- */
+body::before {
+  content: "";
+  position: fixed;
+  top: -140px;
+  right: -160px;
+  width: 560px;
+  height: 560px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='%23141414' stroke-width='1.2'><circle cx='200' cy='200' r='150'/><circle cx='200' cy='200' r='118'/><circle cx='200' cy='200' r='36'/><circle cx='200' cy='200' r='14'/><g><path d='M200 34 l10 22 -20 0 z'/><path d='M200 366 l10 -22 -20 0 z'/><path d='M34 200 l22 -10 0 20 z'/><path d='M366 200 l-22 -10 0 20 z'/><path d='M83 83 l23 8 -15 15 z'/><path d='M317 83 l-8 23 -15 -15 z'/><path d='M83 317 l8 -23 15 15 z'/><path d='M317 317 l-23 -8 15 -15 z'/></g><line x1='200' y1='86' x2='200' y2='164'/><line x1='200' y1='236' x2='200' y2='314'/><line x1='86' y1='200' x2='164' y2='200'/><line x1='236' y1='200' x2='314' y2='200'/><line x1='120' y1='120' x2='174' y2='174' stroke-dasharray='4 5'/><line x1='280' y1='120' x2='226' y2='174' stroke-dasharray='4 5'/><line x1='120' y1='280' x2='174' y2='226' stroke-dasharray='4 5'/><line x1='280' y1='280' x2='226' y2='226' stroke-dasharray='4 5'/><path d='M60 200 a140 140 0 0 1 140 -140' stroke-dasharray='2 7'/></svg>");
 }
 
 .wrap {
   max-width: var(--measure);
   margin: 0 auto;
   padding: 3.4rem 1.6rem 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* ---- top navigation ---- */
@@ -59,6 +85,18 @@ h1 {
   letter-spacing: -0.01em;
   margin: 0 0 0.55rem;
 }
+
+/* small drafting flourish under the name */
+h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 7px;
+  margin-top: 0.75rem;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 7'><line x1='0' y1='3.5' x2='26' y2='3.5' stroke='%23141414' stroke-width='1'/><rect x='29' y='0.5' width='6' height='6' fill='none' stroke='%23141414' stroke-width='1' transform='rotate(45 32 3.5)'/><line x1='38' y1='3.5' x2='64' y2='3.5' stroke='%23141414' stroke-width='1'/></svg>");
+}
+
 .subtitle {
   font-family: var(--sans);
   font-size: 0.82rem;
@@ -68,7 +106,7 @@ h1 {
   margin: 0 0 2.4rem;
 }
 
-/* ---- headshot ---- */
+/* ---- headshot: mounted like a plate in a technical volume ---- */
 .headshot {
   width: 132px;
   height: 165px;
@@ -76,6 +114,10 @@ h1 {
   filter: grayscale(100%);
   float: right;
   margin: 0.5rem 0 1.1rem 1.9rem;
+  border: 1px solid var(--ink);
+  outline: 1px solid var(--rule);
+  outline-offset: 5px;
+  background: #fff;
 }
 
 /* ---- body text ---- */
@@ -126,10 +168,21 @@ a:hover { color: var(--muted); }
   h1 { font-size: 2rem; }
   .headshot { width: 108px; height: 135px; margin-left: 1.1rem; }
   nav { gap: 1.3rem; }
+  body::before {
+    width: 380px; height: 380px;
+    top: -120px; right: -150px;
+    opacity: 0.045;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+}
+
+/* keep print clean */
+@media print {
+  body { background: #fff; }
+  body::before { display: none; }
 }
 
 a:focus-visible, nav a:focus-visible {
