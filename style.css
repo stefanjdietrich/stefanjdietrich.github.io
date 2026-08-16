@@ -18,6 +18,13 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+html { font-size: 16px; }
+
+/* auto-scale on wide screens: ~112% beyond 1840px, ~131% beyond 2320px, ~150% beyond 3200px */
+@media (min-width: 115em) { html { font-size: 18px; } }
+@media (min-width: 145em) { html { font-size: 21px; } }
+@media (min-width: 200em) { html { font-size: 24px; } }
+
 body {
   margin: 0;
   position: relative;
@@ -25,7 +32,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.62;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -73,8 +80,8 @@ h1 {
 
 /* ---- headshot ---- */
 .headshot {
-  width: 132px;
-  height: 165px;
+  width: 8.25rem;
+  height: 10.3rem;
   object-fit: cover;
   filter: grayscale(100%);
   float: right;
@@ -143,8 +150,8 @@ body::before {
   position: absolute;
   top: 110px;
   left: clamp(20px, 4vw, 110px);
-  width: 240px;
-  height: min(640px, 80vh);
+  width: 15rem;
+  height: min(40rem, 80vh);
   pointer-events: none;
   z-index: 0;
   opacity: 0.75;
@@ -159,8 +166,8 @@ body::after {
   position: absolute;
   top: 110px;
   right: clamp(20px, 4vw, 110px);
-  width: 240px;
-  height: min(640px, 80vh);
+  width: 15rem;
+  height: min(40rem, 80vh);
   pointer-events: none;
   z-index: 0;
   opacity: 0.75;
@@ -170,7 +177,7 @@ body::after {
 }
 
 /* hide the figures when the viewport is too narrow for them to sit clear of the text */
-@media (max-width: 90rem) {
+@media (max-width: 82rem) {
   body::before, body::after { display: none; }
 }
 
