@@ -147,11 +147,11 @@ a:hover { color: var(--muted); }
 /* ---- left-margin figures: Lorenz, histogram, structural break ---- */
 body::before {
   content: "";
-  position: absolute;
-  top: 110px;
+  position: fixed;
+  top: 10.5rem;
   left: clamp(20px, 4vw, 110px);
   width: 15rem;
-  height: min(40rem, 80vh);
+  height: min(40rem, calc(100vh - 12rem));
   pointer-events: none;
   z-index: 0;
   opacity: 0.75;
@@ -163,11 +163,11 @@ body::before {
 /* ---- right-margin figures: scatter, supply-demand, event study ---- */
 body::after {
   content: "";
-  position: absolute;
-  top: 110px;
+  position: fixed;
+  top: 10.5rem;
   right: clamp(20px, 4vw, 110px);
   width: 15rem;
-  height: min(40rem, 80vh);
+  height: min(40rem, calc(100vh - 12rem));
   pointer-events: none;
   z-index: 0;
   opacity: 0.75;
