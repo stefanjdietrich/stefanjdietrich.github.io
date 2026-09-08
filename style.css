@@ -112,11 +112,9 @@ h1 {
   line-height: 1.35;
   margin: 0 0 0.6rem;
 }
-.jmp-block .links, .references-block { margin-top: 0.4rem; }
+.jmp-block .links { margin-top: 0.4rem; }
 .jmp-block .links a { color: #1a3a6b; font-weight: 600; text-decoration: none; margin-right: 1.2rem; font-family: var(--sans); font-size: 0.86rem; }
 .jmp-block .links a:hover { color: #0f2547; text-decoration: underline; text-underline-offset: 2px; }
-.references-block { margin-top: 2.2rem; }
-.references-block p { margin-bottom: 0.4rem; }
 
 /* ---- body text ---- */
 p { margin: 0 0 1.15rem; }
@@ -181,8 +179,6 @@ a:hover { color: var(--muted); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
-
-
 
 a:focus-visible, nav a:focus-visible {
   outline: 2px solid var(--ink);
