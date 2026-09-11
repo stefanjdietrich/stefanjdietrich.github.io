@@ -108,7 +108,14 @@ h1 {
   font-weight: 600;
   font-size: 1.12rem;
   line-height: 1.35;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.15rem;
+}
+.jmp-sub {
+  font-weight: 400;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: #4a4a4a;
+  margin: 0 0 0.7rem;
 }
 .jmp-block .links { margin-top: 0.4rem; }
 .jmp-block .links a { color: #1a3a6b; font-weight: 600; text-decoration: none; margin-right: 1.2rem; font-family: var(--sans); font-size: 0.86rem; }
