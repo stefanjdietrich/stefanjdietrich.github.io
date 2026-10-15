@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="darkreader-lock">
 <title>Stefan J. Dietrich</title>
-<meta name="description" content="Stefan Dietrich — PhD Candidate in Economics, Boston University. Applied microeconomics, innovation, economic history.">
+<meta name="description" content="Stefan J. Dietrich — PhD Candidate in Economics, Boston University. Applied microeconomics, economics of innovation, economic history.">
+<script src="theme.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,33 +16,39 @@
     <a href="index.html" aria-current="page">Home</a>
     <a href="research.html">Research</a>
     <a href="assets/docs/cv.pdf" target="_blank" rel="noopener">CV</a>
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+      <span class="sep" aria-hidden="true">/</span>
+      <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
   </nav>
 
   <h1>Stefan J. Dietrich</h1>
-  <p class="subtitle">PhD Candidate in Economics &middot; Boston University</p>
-  <p class="fields-line"><strong>Fields:</strong> Applied Microeconomics &middot; Innovation &middot; Economic History</p>
+  <p class="subtitle"><span class="nowrap">PhD Candidate in Economics &middot;</span> <span class="nowrap">Boston University</span></p>
+  <p class="fields-line"><strong>Fields:</strong> <span class="nowrap">Applied Microeconomics &middot;</span> <span class="nowrap">Economics of Innovation &middot;</span> <span class="nowrap">Economic History</span></p>
 
-  <img class="headshot" src="assets/images/mainpic1.jpg" alt="Stefan Dietrich">
+  <img class="headshot" src="assets/images/mainpic1.jpg" alt="Stefan J. Dietrich" width="800" height="1200">
 
   <p>I am an applied microeconomist studying innovation, firms, and long-run
   growth, with a particular interest in economic history. My research builds new
   microdata to ask how institutions and professional networks shape technological
   change and regional development.</p>
 
-  <div class="jmp-block">
+  <section class="jmp-block" aria-labelledby="jmp-title">
     <p class="jmp-label">Job Market Paper</p>
-    <p class="jmp-title">Engineering Germany&rsquo;s Industrial Success</p>
+    <h2 class="jmp-title" id="jmp-title">Engineering Germany&rsquo;s Industrial Success</h2>
     <p class="jmp-sub">Professional Societies and the Social Dynamics of Innovation</p>
-    <p>I ask whether organizing practical knowledge speeds up industrialization.
+    <p class="jmp-summary">I ask whether organizing practical knowledge speeds up industrialization.
     During Germany&rsquo;s industrial revolution, regions where engineers
     organized into local professional societies pulled ahead in innovation
     &mdash; and the advantage compounded, leaving them more industrialized well
     into the twentieth century.</p>
     <p class="links">
-      <a href="assets/docs/Engineering_Society_jmp_StefanDietrich.pdf" target="_blank" rel="noopener">PDF</a>
+      <a class="primary" href="assets/docs/Engineering_Society_jmp_StefanDietrich.pdf" target="_blank" rel="noopener">PDF</a>
+      <a href="assets/docs/Engineering_Society_presentation_StefanDietrich.pdf" target="_blank" rel="noopener">Slides</a>
       <a href="assets/docs/cv.pdf" target="_blank" rel="noopener">CV</a>
     </p>
-  </div>
+  </section>
 
   <p>I hold an MSc in Economics from the London School of Economics and a BSc from
   the University of Mannheim. I am on the 2026&ndash;27 economics job market and

@@ -1,24 +1,40 @@
-/* Stefan Dietrich — personal site
-   Monochrome, minimal. Two families: serif for text, sans for utility labels. */
+/* Stefan J. Dietrich — personal site
+   Minimal, two themes: light (default) and dark (visitor's choice, via theme.js).
+   Serif for text, sans for labels. One accent colour for everything clickable. */
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --ink:   #141414;
-  --muted: #6a6a6a;
-  --faint: #9a9a9a;
-  --rule:  #e2e2e2;
-  --bg:    #ffffff;
+  --ink:           #141414;
+  --sub:           #3d3d3d;
+  --muted:         #6a6a6a;
+  --rule:          #e2e2e2;
+  --bg:            #ffffff;
+  --accent:        #1a3a6b;
+  --accent-strong: #0f2547;
+  --card-bg:       #f2f5fa;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --measure: 39rem;
+  color-scheme: light;
+}
+
+/* dark: off-white on near-black (never pure white on pure black), accent lightened to stay legible */
+:root[data-theme="dark"] {
+  --ink:           #e7e6e2;
+  --sub:           #c4c3be;
+  --muted:         #9c9c98;
+  --rule:          #2d3036;
+  --bg:            #131518;
+  --accent:        #9fbde6;
+  --accent-strong: #c7daf3;
+  --card-bg:       #1a212c;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
-
-html { font-size: 16px; }
+html { -webkit-text-size-adjust: 100%; font-size: 16px; }
 
 /* auto-scale on wide screens: ~112% beyond 1840px, ~131% beyond 2320px, ~150% beyond 3200px */
 @media (min-width: 115em) { html { font-size: 18px; } }
@@ -35,6 +51,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .wrap {
@@ -46,7 +63,9 @@ body {
 /* ---- top navigation ---- */
 nav {
   display: flex;
-  gap: 1.9rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1.9rem;
   font-family: var(--sans);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
@@ -55,9 +74,33 @@ nav {
   margin-bottom: 3rem;
   border-bottom: 1px solid var(--rule);
 }
-nav a { color: #1a3a6b; font-weight: 600; text-decoration: none; }
-nav a:hover { color: #0f2547; text-decoration: underline; text-underline-offset: 3px; }
-nav a[aria-current="page"] { color: #0f2547; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+nav a { color: var(--accent); font-weight: 600; text-decoration: none; }
+nav a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
+nav a[aria-current="page"] { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+/* ---- light / dark toggle: right end of the nav line ---- */
+.theme-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+html:not([data-theme]) .theme-toggle { display: none; }   /* hidden if JavaScript is off */
+.theme-toggle button {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 500;
+}
+.theme-toggle button:hover { color: var(--accent); }
+.theme-toggle button[aria-pressed="true"] { color: var(--ink); font-weight: 600; cursor: default; }
+.theme-toggle .sep { color: var(--muted); margin: 0 0.5rem; opacity: 0.6; }
 
 /* ---- header block ---- */
 h1 {
@@ -76,50 +119,85 @@ h1 {
   margin: 0 0 2.4rem;
 }
 
-/* ---- headshot ---- */
+/* ---- headshot: floats beside the name/intro block ---- */
 .headshot {
   width: 10.5rem;
   height: auto;
   float: right;
-  margin: 0.5rem 0 1.1rem 1.9rem;
+  margin: 0.3rem 0 1.4rem 1.9rem;
 }
 
-/* ---- home page blocks ---- */
+/* ---- home page ---- */
 .fields-line {
   font-family: var(--sans);
   font-size: 0.92rem;
+  line-height: 1.55;
   color: var(--ink);
   margin: -1.6rem 0 2.2rem;
 }
+
+/* job market paper: the one block on the page meant to stand out */
 .jmp-block {
-  border-left: 3px solid #1a3a6b;
-  padding: 0.2rem 0 0.2rem 1.2rem;
-  margin: 1.6rem 0 1.6rem;
+  clear: both;
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  padding: 1.5rem 1.7rem 1.6rem;
+  margin: 2.4rem 0 2.4rem;
 }
 .jmp-label {
   font-family: var(--sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 0.4rem;
-}
-.jmp-title {
+  font-size: 0.82rem;
   font-weight: 600;
-  font-size: 1.12rem;
-  line-height: 1.35;
-  margin: 0 0 0.15rem;
-}
-.jmp-sub {
-  font-weight: 400;
-  font-size: 1.02rem;
-  line-height: 1.35;
-  color: #4a4a4a;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
   margin: 0 0 0.7rem;
 }
-.jmp-block .links { margin-top: 0.4rem; }
-.jmp-block .links a { color: #1a3a6b; font-weight: 600; text-decoration: none; margin-right: 1.2rem; font-family: var(--sans); font-size: 0.86rem; }
-.jmp-block .links a:hover { color: #0f2547; text-decoration: underline; text-underline-offset: 2px; }
+.jmp-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+}
+.jmp-sub {
+  font-size: 1.16rem;
+  line-height: 1.38;
+  color: var(--sub);
+  margin: 0 0 1.1rem;
+}
+.jmp-summary {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 1.3rem;
+}
+.jmp-block .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+}
+.jmp-block .links a {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.42rem 1rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.jmp-block .links a:hover { background: var(--accent); color: var(--bg); }
+.jmp-block .links a.primary { background: var(--accent); color: var(--bg); }
+.jmp-block .links a.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+
+.nowrap { white-space: nowrap; }
 
 /* ---- body text ---- */
 p { margin: 0 0 1.15rem; }
@@ -153,8 +231,8 @@ a:hover { color: var(--muted); }
 .paper .coauthors { color: var(--muted); font-style: italic; margin: 0 0 0.7rem; font-size: 0.98rem; }
 .paper .abstract  { color: var(--ink); font-size: 0.98rem; margin: 0 0 0.55rem; }
 .paper .links     { font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.02em; }
-.paper .links a   { color: #1a3a6b; font-weight: 600; text-decoration: none; margin-right: 1.2rem; }
-.paper .links a:hover { color: #0f2547; text-decoration: underline; text-underline-offset: 2px; }
+.paper .links a   { color: var(--accent); font-weight: 600; text-decoration: none; margin-right: 1.2rem; }
+.paper .links a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 2px; }
 
 .footer-nav {
   margin-top: 3rem;
@@ -168,7 +246,7 @@ a:hover { color: var(--muted); }
   .headshot {
     float: none;
     display: block;
-    margin: 0 auto 1.4rem;
+    margin: 0 auto 1.8rem;
     width: 13rem;
     height: auto;
   }
@@ -178,14 +256,21 @@ a:hover { color: var(--muted); }
   body { font-size: 17px; }
   .wrap { padding: 2.4rem 1.3rem 3.5rem; }
   h1 { font-size: 2rem; }
-  nav { gap: 1.3rem; }
+  nav { gap: 0.6rem 1.3rem; }
+  .jmp-block { padding: 1.2rem 1.15rem 1.3rem; }
+  .jmp-title { font-size: 1.38rem; }
+  .jmp-sub, .jmp-summary { font-size: 1.06rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
 
-a:focus-visible, nav a:focus-visible {
+@media print {
+  .theme-toggle { display: none; }
+}
+
+a:focus-visible, nav a:focus-visible, .theme-toggle button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
