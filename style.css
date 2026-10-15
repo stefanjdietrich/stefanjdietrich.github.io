@@ -198,6 +198,8 @@ h1 {
 .jmp-block .links a.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
 
 .nowrap { white-space: nowrap; }
+.contact-line .dot { margin: 0 0.25rem; color: var(--muted); }
+.contact-line a { white-space: nowrap; }
 
 /* ---- body text ---- */
 p { margin: 0 0 1.15rem; }
