@@ -1,0 +1,4 @@
+# Keep the paper PDFs out of Google Search and Google Scholar.
+# The PDFs stay downloadable from the website; search engines just may not crawl this folder.
+User-agent: *
+Disallow: /assets/papers/
